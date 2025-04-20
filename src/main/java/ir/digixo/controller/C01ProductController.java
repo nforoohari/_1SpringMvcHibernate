@@ -31,21 +31,20 @@ public class C01ProductController {
         return "add-product";
     }
 
+    @GetMapping("/formForUpdateProduct")
+    public String formForUpdateProduct(@RequestParam("ProductId") Long productId, Model model) {
+        Product productById = productService.findById(productId);
+        model.addAttribute("product", productById);
+        return "add-product";
+    }
+
     @PostMapping("/saveProduct")
     public String saveProduct(@ModelAttribute("product") Product product) {
         productService.save(product);
         return "redirect:/allProducts";
     }
 
-    //todo: update
-    @GetMapping("/formForUpdate")
-    public String formForUpdateProduct(@RequestParam("ProductId") Long productId, Model model) {
-        Product productServiceById = productService.findById(productId);
-        model.addAttribute("product", productServiceById);
-        return "add-product";
-    }
-
-    @GetMapping("/delete")
+    @GetMapping("/deleteProduct")
     public String deleteProduct(@RequestParam("ProductId") Long productId) {
         productService.delete(productId);
         return "redirect:/allProducts";

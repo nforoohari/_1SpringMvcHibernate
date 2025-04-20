@@ -7,9 +7,9 @@ public interface ProductDao {
 
     List<Product> findAll();
 
-    void save(Product product);
-
     Product findById(Long id);
+
+    void save(Product product);
 
     void delete(Long id);
 }

@@ -17,18 +17,18 @@ public class ProductDaoHibernate implements ProductDao {
     @Override
     public List<Product> findAll() {
         return sessionFactory.getCurrentSession()
-                .createQuery("from product order by  price desc ")
+                .createQuery("from product order by price desc ")
                 .getResultList();
-    }
-
-    @Override
-    public void save(Product product) {
-        sessionFactory.getCurrentSession().saveOrUpdate(product);
     }
 
     @Override
     public Product findById(Long id) {
         return sessionFactory.getCurrentSession().get(Product.class, id);
+    }
+
+    @Override
+    public void save(Product product) {
+        sessionFactory.getCurrentSession().saveOrUpdate(product);
     }
 
     @Override
